@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>01p2p-parent</artifactId>
+        <groupId>com.study.p2p</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../01p2p-parent/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>02p2p-home</artifactId>
+    <packaging>war</packaging>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <warName>02p2p-home</warName>
+                </configuration>
+            </plugin>
+            <!-- 配置Tomcat插件 -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <!-- 定义项目发布路径，相当于直接放到tomcat的ROOT目录，在访问时不需要项目名称，直接访问路径就行 -->
+                    <path>/</path>
+                    <!-- 配置tomcat端口 -->
+                    <port>8081</port>
+
+                    <!-- 项目打包热部署时会部署到manager/text目录下 -->
+                    <!--<url>http://192.168.203.128:8084/manager/text</url>-->
+
+                    <!-- 配置用户名和密码
+                    <username>tomcat</username>
+                    <password>tomcat</password>-->
+
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
