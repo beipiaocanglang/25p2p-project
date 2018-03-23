@@ -18,7 +18,6 @@ import study.shiro.domain.User;
  */
 @Controller
 public class LoginAction extends ActionSupport implements ModelDriven<User>{
-
     private User user = new User();
 
     public User getModel() {
