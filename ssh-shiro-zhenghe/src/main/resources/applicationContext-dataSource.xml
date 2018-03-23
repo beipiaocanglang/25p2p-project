@@ -7,7 +7,7 @@
 			xmlns:tx="http://www.springframework.org/schema/tx"
 			xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 			xmlns:task="http://www.springframework.org/schema/task"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
 						http://www.springframework.org/schema/beans/spring-beans.xsd
 						http://www.springframework.org/schema/aop
 						http://www.springframework.org/schema/aop/spring-aop.xsd
@@ -67,9 +67,7 @@
 		</property>		
 	</bean>
 
-	<jpa:repositories base-package="study.shiro.dao"
-		transaction-manager-ref="transactionManager"
-		entity-manager-factory-ref="entityManagerFactory" />
+	<jpa:repositories base-package="study.shiro.dao" transaction-manager-ref="transactionManager" entity-manager-factory-ref="entityManagerFactory" />
 
 	<!-- 事务管理 -->
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">

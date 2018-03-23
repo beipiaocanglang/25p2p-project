@@ -13,6 +13,10 @@ import study.shiro.service.IUserService;
 import javax.annotation.Resource;
 
 /**
+ * 测试的时候 implements Realm 但是实现接口中的方法太多 且没有用
+ * 所以 继承 Realm 的子类 extends AuthorizingRealm
+ * 正好有需要的两个方法
+ *
  * author: canglang
  * create time: 2018/3/18 14:19
  */
