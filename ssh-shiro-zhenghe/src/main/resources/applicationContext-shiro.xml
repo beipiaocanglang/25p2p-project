@@ -35,8 +35,31 @@
 		</property>
 	</bean>
 
+	<!--
+		自定义realm
+	-->
+	<bean id="myrealm" class="study.shiro.utils.MyRealm">
+		<!--自定再使用自己自定义的realm时使用缓存  value 取 ehcach.xml配置文件中自定义的配置的name值-->
+		<property name="authenticationCacheName" value="shiroEhcache"/>
+	</bean>
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="myrealm"></property>
+		<!--ref 取shiro整合ehcache的id (在下面)-->
+		<property name="cacheManager" ref="cacheManager1"></property>
 	</bean>
-	<bean id="myrealm" class="study.shiro.utils.MyRealm"></bean>
+
+	<!-- 开启注解的使用才能再代码中使用shiro的注解(细粒度权限使用用注解来完成) -->
+	<bean id="lifecycle" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycle" >
+		<property name="proxyTargetClass" value="true"/>
+	</bean>
+	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+		<property name="securityManager" ref="securityManager" />
+	</bean>
+
+	<!-- shiro 整合 ehcache -->
+	<bean id="cacheManager1" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<!--ref 取applicationContext-ehcache.xml 配置文件中的id-->
+		<property name="cacheManager" ref="cacheManager"/>
+	</bean>
 </beans>

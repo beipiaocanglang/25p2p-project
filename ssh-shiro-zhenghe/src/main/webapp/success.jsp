@@ -6,6 +6,13 @@
         <title>Insert title here</title>
     </head>
     <body>
-        成功
+        <%--成功--%>
+        <a href="${pageContext.request.contextPath}/book/update">book update</a>
+        <br>
+        <a href="${pageContext.request.contextPath}/book/delete">book delete</a>
+        <br>
+        <a href="${pageContext.request.contextPath}/book/add">book add</a>
+        <br>
+        <a href="${pageContext.request.contextPath}/book/find">book find</a>
     </body>
 </html>
